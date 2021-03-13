@@ -103,6 +103,9 @@ public void GetDrop()///drop浮いてる！
     private async void Delete()
     {
         d.DeleteDrop();
-        
+        await Task.Delay(1000);
+        d.DowmDrop();
+        await Task.Delay(500);
+        d.ResetDrop();
     }
 }
