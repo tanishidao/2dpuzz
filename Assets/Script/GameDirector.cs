@@ -103,12 +103,12 @@ public class GameDirector : MonoBehaviour
                     if (c >= 3)
                     {
                         temp[i, j] = c;
-                    }
-                    else
-                    {
-                        c = 1;
-                        t = Field[i, j];
-                    }
+                    }  
+                }
+                else
+                {
+                    c = 1;
+                    t = Field[i, j];
                 }
             }
         }
@@ -130,15 +130,16 @@ public class GameDirector : MonoBehaviour
                     {
                         temp2[i, j] = c;
                     }
-                    else
-                    {
-                        c = 1;
-                        t = Field[i, j];
-                    }
+                   
+                }
+                else
+                {
+                    c = 1;
+                    t = Field[i, j];
                 }
             }
         }
-        ///
+        ///印があったら消すドロップに変更
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 6; j++)
@@ -154,17 +155,18 @@ public class GameDirector : MonoBehaviour
                     
                 }
                 if (temp2[i, j] >= 3)///temp2
-
                 {
 
-                    for (int k = i; temp[i, j] > 0; k--, temp[i, j]--)
+                    for (int k = i; temp2[i, j] > 0; k--, temp2[i, j]--)
                     {
                         Field[k, j] = 6;
                         Obj[k, j].GetComponent<DropCnt>().Set(6);
                     }
                 }
+                Debug.Log("けすよ＝＝！");
             }
-
+           
         }
+    
     }
 }
