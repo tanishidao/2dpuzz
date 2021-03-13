@@ -78,18 +78,14 @@ public class DropCnt : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = sp[n];
     }
-public void set(int n)///dropにさわってますぜ関数
-    {
-        GetComponent<SpriteRenderer>().sprite = sp[n];
 
-    }
 public void GetDrop()///drop浮いてる！
     {
         touchFlag = true;
     }public void SetDrop()///dropおいた！
     {
         touchFlag = false;
-        ///Delete();
+        Delete();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -104,8 +100,9 @@ public void GetDrop()///drop浮いてる！
    
    
     }
-    ///private async void Delete()
-    ///{
-        ///d.DeleteDrop();
-    ///}
+    private async void Delete()
+    {
+        d.DeleteDrop();
+        
+    }
 }
