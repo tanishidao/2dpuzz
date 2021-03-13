@@ -169,4 +169,40 @@ public class GameDirector : MonoBehaviour
         }
     
     }
+public void DowmDrop()
+    {
+        for(int j = 0; j < 6; j++)
+        {
+            for(int i = 1; i < 5; i++)
+            {
+                if(Field[i,j]==6)
+                {
+                    for(int k= i; k > 0; k--)
+                    {
+                        if (Field[k - 1,j] != 6)
+                        {
+                            ChangePos(Obj[k, j],Obj[k - 1, j]);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+    public void ResetDrop()
+    {
+       for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < 6; j++)
+            {
+                if(Field[i,j]==6)
+                {
+                    int type = Random.Range(0, 6);
+                    Field[i, j] = type;
+                    Obj[i, j].GetComponent<DropCnt>().Set(type);
+                }
+            }
+        }
+    }
+
 }
