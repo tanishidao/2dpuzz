@@ -38,12 +38,27 @@ public class DropCnt : MonoBehaviour
     }
 
     GameDirector d;
+    
+    public enum BallType
+    {
+        Invalide =-1,
+        Water,
+        Wind,
+        Dark,
+        Light,
+        Heal,
+        Fire,
+
+    }
+    public BallType  ballType= BallType.Invalide;
+     
     void Start()
     {
         ///rにRectTransformを入れる
         r = GetComponent<RectTransform>();
         r2 = transform.parent.GetComponent<RectTransform>();
         d = GameObject.Find("D").GetComponent<GameDirector>();
+       
     }
 
     // Update is called once per frame
@@ -77,6 +92,8 @@ public class DropCnt : MonoBehaviour
     public void Set(int n)
     {
         GetComponent<SpriteRenderer>().sprite = sp[n];
+        ballType = (BallType)n;
+
     }
 
 public void GetDrop()///drop浮いてる！
@@ -102,10 +119,17 @@ public void GetDrop()///drop浮いてる！
     }
     private async void Delete()
     {
-        d.DeleteDrop();
-        await Task.Delay(1000);
-        d.DowmDrop();
-        await Task.Delay(500);
-        d.ResetDrop();
+        while (true)
+        {
+            
+            d.DeleteDrop();
+            if (d.Check()) break;//盤面に空白なければ抜ける
+            await Task.Delay(1000);
+            d.DowmDrop();
+            await Task.Delay(500);
+            d.ResetDrop();
+            await Task.Delay(500);
+        }
+
     }
 }
