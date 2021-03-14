@@ -149,8 +149,17 @@ public class GameDirector : MonoBehaviour
                 {
                     for (int k = j; temp[i, j] > 0; k--, temp[i, j]--)
                     {
+                        if(Obj[i,k].GetComponent<DropCnt>().ballType == DropCnt.BallType.Fire) 
+                        {
+
+                        }
+                        
+
+                        ///Debug.Log("消えたのは" + Obj[i, k].GetComponent<DropCnt>().Set( n)) ;
                         Field[i, k] = 6;
                         Obj[i, k].GetComponent<DropCnt>().Set(6);
+                    
+                        
                     }
                     
                 }
@@ -205,4 +214,20 @@ public void DowmDrop()
         }
     }
 
+    public bool Check()
+    {
+       for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < 6; j++)
+            {
+                if(Field[i,j]==6)
+                {
+                    return false;
+                }
+
+            }
+
+        }
+        return true;
+    }
 }
