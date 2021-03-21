@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameDirector : MonoBehaviour
         get { return f; }
         set { f = value; }
     }
+   private  int counter = 0;
+
+    public int CountLimit ;
 
     void Start()
     {
@@ -138,6 +142,12 @@ public class GameDirector : MonoBehaviour
                     t = Field[i, j];
                 }
             }
+            counter++;
+            Debug.Log(counter);
+            if (counter == CountLimit)
+            {
+                SceneManager.LoadScene("clearScene");
+            }
         }
         ///印があったら消すドロップに変更
         for (int i = 0; i < 5; i++)
@@ -172,11 +182,15 @@ public class GameDirector : MonoBehaviour
                         Obj[k, j].GetComponent<DropCnt>().Set(6);
                     }
                 }
-                Debug.Log("けすよ＝＝！");
+                
+                
+               
             }
-           
+            Debug.Log("けすよ＝＝！");
+            
         }
-    
+       
+
     }
 public void DowmDrop()
     {
