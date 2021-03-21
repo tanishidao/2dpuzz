@@ -51,7 +51,8 @@ public class DropCnt : MonoBehaviour
 
     }
     public BallType  ballType= BallType.Invalide;
-     
+
+    
     void Start()
     {
         ///rにRectTransformを入れる
@@ -123,6 +124,8 @@ public void GetDrop()///drop浮いてる！
         {
             
             d.DeleteDrop();
+            
+            
             if (d.Check()) break;//盤面に空白なければ抜ける
             await Task.Delay(1000);
             d.DowmDrop();
