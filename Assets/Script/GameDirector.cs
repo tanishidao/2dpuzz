@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class GameDirector : MonoBehaviour
 
     public int CountLimit ;
 
+    public Text RemaingOve;
+
+    public int Gettime;
     void Start()
     {
 
@@ -30,7 +34,7 @@ public class GameDirector : MonoBehaviour
 
     void Update()
     {
-
+        RemaingOve.text = ( counter +"/"+ CountLimit);
     }
     public bool CheckPos(Vector2 p1, Vector2 p2)
     {
@@ -144,6 +148,8 @@ public class GameDirector : MonoBehaviour
             }
             counter++;
             Debug.Log(counter);
+
+            
             if (counter == CountLimit)
             {
                 SceneManager.LoadScene("clearScene");
@@ -157,15 +163,17 @@ public class GameDirector : MonoBehaviour
                 if (temp[i, j] >= 3)
 
                 {
+                   
                     for (int k = j; temp[i, j] > 0; k--, temp[i, j]--)
                     {
-                        if(Obj[i,k].GetComponent<DropCnt>().ballType == DropCnt.BallType.Fire) 
-                        {
 
-                        }
-                        
 
-                        ///Debug.Log("消えたのは" + Obj[i, k].GetComponent<DropCnt>().Set( n)) ;
+                       /// if (Obj[i, k].GetComponent<DropCnt>().ballType == DropCnt.BallType.Heal)
+                      /// {
+                          ///  Time.timeScale = 0;
+                            ///Debug.Log("タイム増やす");
+                    ///    }
+                        ///Debug.Log("消えたのは" + Obj[i, k].GetComponent<DropCnt>().Set(n)) ;
                         Field[i, k] = 6;
                         Obj[i, k].GetComponent<DropCnt>().Set(6);
                     
@@ -175,18 +183,24 @@ public class GameDirector : MonoBehaviour
                 }
                 if (temp2[i, j] >= 3)///temp2
                 {
+                    
 
                     for (int k = i; temp2[i, j] > 0; k--, temp2[i, j]--)
                     {
+                       /// if (Obj[k, j].GetComponent<DropCnt>().ballType == DropCnt.BallType.Heal)
+                    ///  {
+                         ///   GetComponent<Timer>().totalTime -= Gettime;
+                         ///   Debug.Log("タイム増やす");
+                      ///  }
                         Field[k, j] = 6;
                         Obj[k, j].GetComponent<DropCnt>().Set(6);
                     }
                 }
-                
-                
                
+
+                Debug.Log("けすよ！");
             }
-            Debug.Log("けすよ＝＝！");
+           
             
         }
        

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public Text timeText;
 
-    public Text Gameover;
+
 
     public float totalTime;
-    
-    int seconds;
+
+     int seconds;
 
     private void Start()
     {
@@ -19,13 +20,19 @@ public class Timer : MonoBehaviour
     }
     private void Update()
     {
+       
         totalTime -= Time.deltaTime;
         seconds = (int)totalTime;
         timeText.text = seconds.ToString();
 
-        if(seconds == 0)
+        
+
+
+        if (seconds == 0)
         {
-            Gameover.text = ("GAMEOVER");
+
+            SceneManager.LoadScene("GameoverScene");
+            
         }
     }
 }
